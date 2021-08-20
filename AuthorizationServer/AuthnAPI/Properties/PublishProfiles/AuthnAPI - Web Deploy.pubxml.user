@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAaNcARvt1fkK0P0mz872r4gAAAAACAAAAAAAQZgAAAAEAACAAAAB9TYhDeYOahZ4mXbBQG17+nyLNUmPHrs9+fUbyZumlfQAAAAAOgAAAAAIAACAAAADY+tnk28ySoef5DcZ2SMwNfRQ8dIfCyWMCo3njn2vljoAAAACGe44Glek9kr+l3B+jIb+1zWV+lFitNHAujfln+SFasYTPLq2r2svT0s1XZDyWmO4e8rZcWTCDPXC/F1qtn/vIgd+0abzhEpyPFjRsnEnlVj1Vc6QgfdmNjP3EqrGI52+xsZIpvq/sg5Eq5YSL01xEm1kiWWIN0/m69Psssc6e+UAAAACqFbRIvnlzvDDaa5F7yo4BrthKKcmVmatKdhrNZWqT0o8zLlPoFUxlOB91ihCzQVSm50jUZYPG+bHNybEJENOg</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="AuthnAPI.Data.ApiDbContext">
+      <Value>Data Source=tcp:authnapidbserver.database.windows.net,1433%3bInitial Catalog=AuthnAPI_db%3bUser Id=ambrocio.gv%40authnapidbserver%3bPassword=vodka10A!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
