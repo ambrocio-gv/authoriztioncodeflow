@@ -52,6 +52,7 @@ namespace ResourceApp
                     config.ClientId = "client_id";
                     config.ClientSecret = "client_secret";
                     config.CallbackPath = "/oauth/callback";
+                    config.UsePkce = true;
                     config.AuthorizationEndpoint = "https://localhost:44358/oauth/authorize";
                     config.TokenEndpoint = "https://localhost:44358/oauth/token";
                     //config.AuthorizationEndpoint = "https://localhost:44382/oauth/authorize";

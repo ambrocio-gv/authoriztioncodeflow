@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\ResourceApp.csproj": {}
+    "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\ResourceApp.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\ResourceApp.csproj": {
+    "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\ResourceApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\ResourceApp.csproj",
+        "projectUniqueName": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\ResourceApp.csproj",
         "projectName": "ResourceApp",
-        "projectPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\ResourceApp.csproj",
+        "projectPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\ResourceApp.csproj",
         "packagesPath": "C:\\Users\\ABCMNLSOL08\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\obj\\",
+        "outputPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ABCMNLSOL08\\AppData\\Roaming\\NuGet\\NuGet.Config",

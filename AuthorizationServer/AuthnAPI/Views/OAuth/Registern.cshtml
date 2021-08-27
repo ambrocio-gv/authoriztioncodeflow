@@ -1,9 +1,10 @@
-﻿
+﻿@page
+
 @{
     @*ViewData["Title"] = "Register";*@
 }
 
-@{ var url = $"/OAuth/Register"; }
+@{ var url = $"/OAuth/Register{Model}"; }
 
 
 <div class="container">
@@ -27,7 +28,7 @@
                 <label></label>
                 <input class="form-control" type="text" name="password" />
                 <span class="text-danger"></span>
-            </div>
+            </div>    
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>

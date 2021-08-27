@@ -6665,11 +6665,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desktop\\ABC Repos\\AuthnAPI\\AuthnAPI\\AuthnAPI.csproj",
+      "projectUniqueName": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\AuthorizationServer\\AuthnAPI\\AuthnAPI.csproj",
       "projectName": "AuthnAPI",
-      "projectPath": "D:\\Desktop\\ABC Repos\\AuthnAPI\\AuthnAPI\\AuthnAPI.csproj",
+      "projectPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\AuthorizationServer\\AuthnAPI\\AuthnAPI.csproj",
       "packagesPath": "C:\\Users\\ABCMNLSOL08\\.nuget\\packages\\",
-      "outputPath": "D:\\Desktop\\ABC Repos\\AuthnAPI\\AuthnAPI\\obj\\",
+      "outputPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\AuthorizationServer\\AuthnAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ABCMNLSOL08\\AppData\\Roaming\\NuGet\\NuGet.Config",

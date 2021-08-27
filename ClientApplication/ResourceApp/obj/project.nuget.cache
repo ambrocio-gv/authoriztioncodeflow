@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3HokLc8Fcc2ZmqNSI+coAgq29TGKBp9LlTB1UkPDBo6JelExWkCQ3aGBFstehAQa/64GfwOWyODGOI61tv5zeA==",
+  "dgSpecHash": "t8a1FCF15Gr75tbQA4nTngHdK/nlGnPDHDF5Im10k4WcT/AZrZo/oUbww7vu91cHmNLlcthSozfnQjZydEZUmQ==",
   "success": true,
-  "projectFilePath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ResourceApp\\ResourceApp\\ResourceApp.csproj",
+  "projectFilePath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\ClientApplication\\ResourceApp\\ResourceApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ABCMNLSOL08\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.3\\microsoft.aspnetcore.mvc.razor.extensions.5.0.3.nupkg.sha512",
     "C:\\Users\\ABCMNLSOL08\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\5.0.3\\microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.3.nupkg.sha512",

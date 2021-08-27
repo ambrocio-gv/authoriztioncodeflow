@@ -5981,11 +5981,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desktop\\ABC Repos\\TodoAPI\\TodoAPI\\TodoAPI.csproj",
+      "projectUniqueName": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\OwnedAPI\\TodoAPI\\TodoAPI.csproj",
       "projectName": "TodoAPI",
-      "projectPath": "D:\\Desktop\\ABC Repos\\TodoAPI\\TodoAPI\\TodoAPI.csproj",
+      "projectPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\OwnedAPI\\TodoAPI\\TodoAPI.csproj",
       "packagesPath": "C:\\Users\\ABCMNLSOL08\\.nuget\\packages\\",
-      "outputPath": "D:\\Desktop\\ABC Repos\\TodoAPI\\TodoAPI\\obj\\",
+      "outputPath": "D:\\Desktop\\ABC Repos\\AuthorizatonCodeFlow\\OwnedAPI\\TodoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ABCMNLSOL08\\AppData\\Roaming\\NuGet\\NuGet.Config",

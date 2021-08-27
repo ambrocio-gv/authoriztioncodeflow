@@ -97,7 +97,7 @@ namespace AuthnAPI
                 .AddJwtBearer("OAuth", config => {
                     //var secretBytes = Encoding.UTF8.GetBytes(Constants.Secret);
                     //var key = new SymmetricSecurityKey(secretBytes);
-
+                    
                     config.Events = new JwtBearerEvents() {
                         OnMessageReceived = context => {
                             if (context.Request.Query.ContainsKey("access_token"))

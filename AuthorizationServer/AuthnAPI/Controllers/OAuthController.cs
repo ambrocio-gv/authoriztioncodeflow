@@ -15,7 +15,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
@@ -33,6 +35,14 @@ namespace AuthnAPI.Controllers
 
         private static IdentityUser currentUser;
 
+        private static string codeChallenge;
+
+        private static string authorizationCode;
+
+        private static string storeRedirectUri;
+
+        private static string storeAuthState;
+
         public OAuthController(
             UserManager<IdentityUser> userManager,
             IOptionsMonitor<JwtConfig> optionsMonitor,
@@ -46,21 +56,145 @@ namespace AuthnAPI.Controllers
         }
 
 
+        private static string GenerateNonce()
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyz123456789";
+            var random = new Random();
+            var nonce = new char[128];
+            for (int i = 0; i < nonce.Length; i++)
+            {
+                nonce[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(nonce);
+        }
+
+
+        private static string GenerateCodeChallenge(string codeVerifier)
+        {
+            using var sha256 = SHA256.Create();
+            var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(codeVerifier));
+            var b64Hash = Convert.ToBase64String(hash);
+            var code = Regex.Replace(b64Hash, "\\+", "-");
+            code = Regex.Replace(code, "\\/", "_");
+            code = Regex.Replace(code, "=+$", "");
+            return code;
+        }
+
+        [HttpGet]
+        public IActionResult Register(
+           string code_challenge_method,
+           string code_challenge,
+           string response_type, // authorization flow type 
+           string client_id, // client id
+           string redirect_uri,
+           string scope, // what info I want = email,grandma,tel
+           string state) // random string generated to confirm that we are going to back to the same client
+        {
+
+            var model = new UserRegistrationDto();
+
+            //var query = new QueryBuilder();
+            //query.Add("redirectUri", redirect_uri);
+            //query.Add("state", state);
+            //query.Add("code_challenge_method", code_challenge_method);
+            //query.Add("code_challenge", code_challenge);
+            return View(model); //returns the login view
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(
+           string username,
+           string password,
+           string response_type, // authorization flow type 
+           string client_id, // client id
+           string redirect_uri,
+           string scope) // random string generated to confirm that we are going to back to the same client
+        {
+
+            var user = new UserRegistrationDto();
+
+            user.Email = username;
+            user.Password = password;
+
+            if (ModelState.IsValid)
+            {
+                // We can utilize model
+                var existingUser = await _userManager.FindByEmailAsync(user.Email); //there can only be one user with that email in the system
+
+                if (existingUser != null)
+                {
+                    return BadRequest(new RegistrationResponse() {
+                        Errors = new List<string>()
+                        {
+                            "Email already in use"
+                        },
+                        Success = false
+                    });
+                }
+
+                var newUser = new IdentityUser() { Email = user.Email, UserName = user.Email };
+                var isCreated = await _userManager.CreateAsync(newUser, user.Password);
+                if (isCreated.Succeeded)
+                {
+                    return RedirectToAction(actionName: "Authorize");
+                }
+                else
+                {
+                    return BadRequest(new RegistrationResponse() {
+                        Errors = isCreated.Errors.Select(x => x.Description).ToList(),
+                        Success = false
+                    });
+                }
+
+            }
+
+            return BadRequest(new RegistrationResponse() {
+                Errors = new List<string>()
+                {
+                    "Invalid values"
+                },
+                Success = false
+            });
+
+        }
+
+
+
+
+
+
 
 
 
         [HttpGet]
         public IActionResult Authorize(
+            string code_challenge_method,
+            string code_challenge,
             string response_type, // authorization flow type 
             string client_id, // client id
             string redirect_uri,
             string scope, // what info I want = email,grandma,tel
             string state) // random string generated to confirm that we are going to back to the same client
         {
-            // ?a=foo&b=bar
+
+            if (code_challenge!= null)
+            {
+                codeChallenge = code_challenge;
+            }
+            if (redirect_uri != null)
+            {
+                storeRedirectUri = redirect_uri;
+            }
+            if (state != null)
+            {
+                storeAuthState = state;
+            }
+
+            
             var query = new QueryBuilder();
-            query.Add("redirectUri", redirect_uri);
-            query.Add("state", state);
+            query.Add("redirectUri", storeRedirectUri);
+            query.Add("state", storeAuthState);
 
             return View(model: query.ToString()); //returns the login view
         }
@@ -71,7 +205,7 @@ namespace AuthnAPI.Controllers
 
         //LOGIN - server sends authorization code once login is good //change name to login later //can be in api controller no views returned only redirect
         [HttpPost]
-        public async Task<IActionResult> Authorize(
+        public async Task<IActionResult> Authorize(               
             string username,
             string password,
             string redirectUri, //personal note: not sure why the name has to change 
@@ -112,10 +246,14 @@ namespace AuthnAPI.Controllers
                 }
 
                 //send authorization code if login is good 
-                const string code = "RANDOMAUTHORIZATIONCODE";
+                var code = GenerateNonce();
+
+                authorizationCode = code;
+
                 var query = new QueryBuilder();
                 query.Add("code", code);
                 query.Add("state", state);
+           
                 //query.Add("existinguser", (IEnumerable<string>)existingUser);
 
                 return Redirect($"{redirectUri}{query.ToString()}"); // pass  var jwtToken = await GenerateJwtToken(existingUser);
@@ -131,7 +269,8 @@ namespace AuthnAPI.Controllers
         }
 
         //Authorization code is sent back + client ID + client secret to /oauth/token
-        public async Task<IActionResult> Token(
+        public async Task<IActionResult> Token(            
+            string code_verifier,
             string grant_type, // flow of access_token request
             string code, // confirmation of the authentication process
             string redirect_uri,
@@ -140,16 +279,31 @@ namespace AuthnAPI.Controllers
             string refresh_token,
             string existinguser)
         {
-            //mising logic to validate the authorization code - DO WITH PKECE
-            if(code != "RANDOMAUTHORIZATIONCODE" && client_id != "client_id" && client_secret != "client_secret")
+            var convertedToCodeChallenge = GenerateCodeChallenge(code_verifier);
+
+            if (code != authorizationCode && convertedToCodeChallenge != codeChallenge)
             {
                 return BadRequest(new AuthResult() {
                     Errors = new List<string>() {
-                            "Invalid Authorization Code / Client Id / Client Secret"
+                            "Invalid Authorization Code / Code Verifier"
                         },
                     Success = false
                 });
             }
+
+
+
+
+            //mising logic to validate the authorization code - DO WITH PKECE
+            //if(code != "RANDOMAUTHORIZATIONCODE" && client_id != "client_id" && client_secret != "client_secret")
+            //{
+            //    return BadRequest(new AuthResult() {
+            //        Errors = new List<string>() {
+            //                "Invalid Authorization Code / Client Id / Client Secret"
+            //            },
+            //        Success = false
+            //    });
+            //}
 
             var user = currentUser;
 
