@@ -40,7 +40,7 @@ namespace TodoAPI
             services.AddDbContext<ApiDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-     
+
 
 
             services.AddAuthentication("DefaultAuth")
@@ -63,6 +63,7 @@ namespace TodoAPI
                 .AddHttpContextAccessor();
 
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
 
             services.AddControllers();
@@ -82,8 +83,45 @@ namespace TodoAPI
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI v1"));
             }
 
+            if (env.IsProduction() || env.IsStaging())
+            {
+                app.UseExceptionHandler("/Error/index.html");
+                app.UseHsts();
+            }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "swagger/{documentName}/swagger.json";
+            });
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "swagger";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+
+                // custom CSS
+                c.InjectStylesheet("/swagger-ui/custom.css");
+            });
+
+            app.Use(async (ctx, next) =>
+            {
+                await next();
+                if (ctx.Response.StatusCode == 204)
+                {
+                    ctx.Response.ContentLength = 0;
+                }
+            });
+
+
+
+            //app.UseDeveloperExceptionPage();
+            //app.UseMigrationsEndPoint();
+
             //app.UseHttpsRedirection();
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthentication();
@@ -94,9 +132,13 @@ namespace TodoAPI
                 //endpoints.MapControllerRoute(
                 //       name: "default",
                 //       pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapControllers();
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
+                //endpoints.MapDefaultControllerRoute();
             });
+
+            app.UseCors();
+
+
         }
     }
 }

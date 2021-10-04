@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using ResourceApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,10 +55,12 @@ namespace ResourceApp
                     config.ClientSecret = "client_secret";
                     config.CallbackPath = "/oauth/callback";
                     config.UsePkce = true;
-                    config.AuthorizationEndpoint = "https://localhost:44358/oauth/authorize";
-                    config.TokenEndpoint = "https://localhost:44358/oauth/token";
-                    //config.AuthorizationEndpoint = "https://localhost:44382/oauth/authorize";
-                    //config.TokenEndpoint = "https://localhost:44382/oauth/token";
+                    //config.AuthorizationEndpoint = "https://localhost:44358/oauth/authorize";
+                    //config.TokenEndpoint = "https://localhost:44358/oauth/token";
+
+                    //FOR IIS - https redirection is also disabled 
+                    config.AuthorizationEndpoint = "https://authenticationserver.local:447/oauth/authorize";
+                    config.TokenEndpoint = "https://authenticationserver.local:447/oauth/token";
                     config.SaveTokens = true;
 
                     config.Events = new OAuthEvents() {
@@ -75,10 +79,19 @@ namespace ResourceApp
                             return Task.CompletedTask;
                         }
                     };
+                
                 });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
             services.AddHttpClient();
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
 
 
             services.AddControllersWithViews()
@@ -101,6 +114,7 @@ namespace ResourceApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

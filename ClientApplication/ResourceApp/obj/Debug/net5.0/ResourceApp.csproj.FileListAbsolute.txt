@@ -458,7 +458,6 @@ D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debu
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.UserSecrets.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.Configuration.Xml.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.DependencyInjection.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\Microsoft.Extensions.FileProviders.Abstractions.dll
@@ -516,7 +515,6 @@ D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debu
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Data.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.Contracts.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.Debug.dll
-D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.DiagnosticSource.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.EventLog.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.FileVersionInfo.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\refs\System.Diagnostics.Process.dll
@@ -685,7 +683,6 @@ D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debu
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.csprojAssemblyReference.cache
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.GeneratedMSBuildEditorConfig.editorconfig
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.AssemblyInfoInputs.cache
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.AssemblyInfo.cs
@@ -716,3 +713,10 @@ D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debu
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ref\ResourceApp.dll
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.pdb
 D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.genruntimeconfig.cache
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\obj\Debug\net5.0\ResourceApp.csproj.AssemblyReference.cache
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Desktop\ABC Repos\AuthorizatonCodeFlow\ClientApplication\ResourceApp\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll

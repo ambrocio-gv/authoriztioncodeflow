@@ -41,10 +41,11 @@ namespace ResourceApp.Controllers
         public async Task<IActionResult> Secret()
         {
             //var serverResponse = await AccessTokenRefreshWrapper(
-            //    () => SecuredGetRequest("https://localhost:44358/secret/index")); //this is for development to check the validate route for the access token in server
+            //    () => SecuredGetRequest("https://clientapp.local:444/secret/index")); //this is for development to check the validate route for the access token in server
 
             var apiResponse = await AccessTokenRefreshWrapper(
-                () => SecuredGetRequest("https://localhost:5001/api/Todo"));
+            //////    //() => SecuredGetRequest("https://localhost:5001/api/Todo"));
+            () => SecuredGetRequest("https://ownedapi.local:446/api/Todo"));
 
 
 
@@ -54,11 +55,11 @@ namespace ResourceApp.Controllers
 
             //_client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-            //var serverResponse = await _client.GetAsync("https://localhost:44358/secret/index");
+            ////var serverResponse = await _client.GetAsync("https://localhost:44358/secret/index");
 
-            //var apiResponse = await _client.GetAsync("https://localhost:5001/secret/index");
+            ////var apiResponse = await _client.GetAsync("https://localhost:5001/secret/index");
 
-            //txtBlock.Text = await apiResponse.Content.ReadAsStringAsync();
+            ////txtBlock.Text = await apiResponse.Content.ReadAsStringAsync();
 
             var responseString = await apiResponse.Content.ReadAsStringAsync();
 
@@ -66,9 +67,9 @@ namespace ResourceApp.Controllers
 
             List<ItemData> items = JsonConvert.DeserializeObject<List<ItemData>>(responseString);
 
-            
+            //return View();
 
-            
+
 
             return View(items);
         }
@@ -106,7 +107,7 @@ namespace ResourceApp.Controllers
                 ["refresh_token"] = refreshToken
             };
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:44358/oauth/token") {
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://authenticationserver.local:447/oauth/token") {
                 Content = new FormUrlEncodedContent(requestData) // required Content-Type: application/x-www-form-urlencoded
             };
 

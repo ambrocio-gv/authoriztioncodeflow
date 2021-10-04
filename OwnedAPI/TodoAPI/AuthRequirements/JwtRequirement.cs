@@ -32,7 +32,7 @@ namespace TodoAPI.AuthRequirements
                 var accessToken = authHeader.ToString().Split(' ')[1];
 
                 var response = await _client
-                    .GetAsync($"https://localhost:44358/oauth/validate?access_token={accessToken}");
+                    .GetAsync($"https://authenticationserver.local:447/oauth/validate?access_token={accessToken}");
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
